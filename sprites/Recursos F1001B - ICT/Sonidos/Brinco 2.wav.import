@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dd8jj1asd4jbq"
+path="res://.godot/imported/Brinco 2.wav-2d34b077e20c64bc754d2230f38bc339.sample"
+
+[deps]
+
+source_file="res://sprites/Recursos F1001B - ICT/Sonidos/Brinco 2.wav"
+dest_files=["res://.godot/imported/Brinco 2.wav-2d34b077e20c64bc754d2230f38bc339.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

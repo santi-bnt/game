@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://jjapg7roui8y"
+path="res://.godot/imported/musica pollo.mp3-f78b72edb4b7f9ce518f4cc7b34b6efa.mp3str"
+
+[deps]
+
+source_file="res://sprites/Recursos F1001B - ICT/Sonidos/musica pollo.mp3"
+dest_files=["res://.godot/imported/musica pollo.mp3-f78b72edb4b7f9ce518f4cc7b34b6efa.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

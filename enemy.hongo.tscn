@@ -1,0 +1,50 @@
+[gd_scene load_steps=8 format=3 uid="uid://beppm3lng64sd"]
+
+[ext_resource type="Script" path="res://enemigo.gd" id="1_6ixdc"]
+[ext_resource type="Texture2D" uid="uid://dp7bcxiba61ig" path="res://sprites/Recursos F1001B - ICT/Enemigos/Hongo.png" id="2_b3gfb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yq88p"]
+atlas = ExtResource("2_b3gfb")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1204"]
+atlas = ExtResource("2_b3gfb")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_globn"]
+atlas = ExtResource("2_b3gfb")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6nljc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yq88p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1204")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_globn")
+}],
+"loop": true,
+"name": &"mover",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_usrdn"]
+size = Vector2(26, 20)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+position = Vector2(29, 13)
+script = ExtResource("1_6ixdc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(2, -5)
+sprite_frames = SubResource("SpriteFrames_6nljc")
+animation = &"mover"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_usrdn")
+one_way_collision = true

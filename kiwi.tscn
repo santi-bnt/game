@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://dpyxl5a1dnek0"]
+
+[ext_resource type="Script" path="res://kiwi.gd" id="1_1pmmi"]
+[ext_resource type="Texture2D" uid="uid://cjjix0lm1c6bh" path="res://sprites/Recursos F1001B - ICT/Objetos/Kiwi.png" id="2_cfj76"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8hd8o"]
+radius = 8.06226
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2b4at"]
+atlas = ExtResource("2_cfj76")
+region = Rect2(0, 0, 31, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3posd"]
+atlas = ExtResource("2_cfj76")
+region = Rect2(31, 0, 31, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_34dt0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2b4at")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3posd")
+}],
+"loop": true,
+"name": &"kiwi",
+"speed": 5.0
+}]
+
+[node name="item" type="Node2D"]
+
+[node name="Area2D" type="Area2D" parent="."]
+script = ExtResource("1_1pmmi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(48, 38)
+shape = SubResource("CircleShape2D_8hd8o")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+position = Vector2(48, 39)
+sprite_frames = SubResource("SpriteFrames_34dt0")
+animation = &"kiwi"
+frame_progress = 0.287074
+speed_scale = 0.2
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]

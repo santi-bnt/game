@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://bcr38xmptfdcy"]
+
+[ext_resource type="Script" path="res://enemy.gd" id="1_70n4d"]
+[ext_resource type="Texture2D" uid="uid://byrs5w77joa0m" path="res://camaleon.png" id="2_278dp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksw5x"]
+atlas = ExtResource("2_278dp")
+region = Rect2(0, 0, 1194, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qhmo"]
+atlas = ExtResource("2_278dp")
+region = Rect2(1194, 0, 1194, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1f5fw"]
+atlas = ExtResource("2_278dp")
+region = Rect2(2388, 0, 1194, 672)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8g8i0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksw5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qhmo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1f5fw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kbir"]
+size = Vector2(37, 26)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_323pi"]
+size = Vector2(46, 29)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_82xsq"]
+size = Vector2(47, 30)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_70n4d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(87, 43.125)
+scale = Vector2(0.0318258, 0.0360863)
+sprite_frames = SubResource("SpriteFrames_8g8i0")
+frame_progress = 0.787701
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(85.5, 42)
+shape = SubResource("RectangleShape2D_6kbir")
+
+[node name="hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(87, 41.5)
+shape = SubResource("RectangleShape2D_323pi")
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+autostart = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(64, 31)
+exclude_parent = false
+target_position = Vector2(0, 30)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(87.5, 41)
+shape = SubResource("RectangleShape2D_82xsq")
+
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

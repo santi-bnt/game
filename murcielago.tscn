@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://cb6m54s1ex81l"]
+
+[ext_resource type="Script" path="res://murcielago.gd" id="1_fdgj1"]
+[ext_resource type="Texture2D" uid="uid://b0s4ga1ww2qlh" path="res://sprites/Recursos F1001B - ICT/Enemigos/Murcielago.png" id="2_2ea4m"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0dh5l"]
+atlas = ExtResource("2_2ea4m")
+region = Rect2(0, 0, 43, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xsug"]
+atlas = ExtResource("2_2ea4m")
+region = Rect2(43, 0, 43, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ouhw3"]
+atlas = ExtResource("2_2ea4m")
+region = Rect2(86, 0, 43, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m5sgg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0dh5l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xsug")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ouhw3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fapky"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6acao"]
+radius = 14.0
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_fdgj1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(153, 111)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_m5sgg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(148, 110)
+shape = SubResource("CircleShape2D_fapky")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(148, 110)
+shape = SubResource("CircleShape2D_6acao")
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+autostart = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(147, 111)
+target_position = Vector2(-10, 0)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2(146, 111)
+target_position = Vector2(13, 0)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

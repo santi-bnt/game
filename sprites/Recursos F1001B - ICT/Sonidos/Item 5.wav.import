@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ddqc4vrmq8cpg"
+path="res://.godot/imported/Item 5.wav-9fc6e39fa2ebeec0c6eeb8de05c1007e.sample"
+
+[deps]
+
+source_file="res://sprites/Recursos F1001B - ICT/Sonidos/Item 5.wav"
+dest_files=["res://.godot/imported/Item 5.wav-9fc6e39fa2ebeec0c6eeb8de05c1007e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=3 uid="uid://bj5a56rna1tc6"]
+
+[ext_resource type="Script" path="res://sprites/menu.gd" id="1_0wu8x"]
+[ext_resource type="AudioStream" uid="uid://jjapg7roui8y" path="res://sprites/Recursos F1001B - ICT/Sonidos/musica pollo.mp3" id="2_b2l8o"]
+[ext_resource type="Texture2D" uid="uid://d0y2bknl5h03e" path="res://Opera Snapshot_2024-09-03_211800_www.canva.com.png" id="3_l0xdi"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_0wu8x")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 632.0
+offset_top = 296.0
+offset_right = 1049.0
+offset_bottom = 423.0
+
+[node name="jugar" type="Button" parent="."]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 547.0
+offset_right = 933.0
+offset_bottom = 692.0
+theme_override_colors/font_hover_color = Color(0, 0.607843, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "JUGAR"
+flat = true
+
+[node name="salir" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1000.0
+offset_top = 544.0
+offset_right = 1739.0
+offset_bottom = 689.0
+theme_override_colors/font_hover_color = Color(0.890196, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Salir
+"
+flat = true
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ParallaxBackground/ParallaxLayer"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_b2l8o")
+autoplay = true
+
+[node name="OperaSnapshot2024-09-03211800Www_canva_com" type="Sprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(958.125, 541.625)
+scale = Vector2(2.16097, 2.56524)
+texture = ExtResource("3_l0xdi")
+metadata/_edit_lock_ = true
+
+[connection signal="pressed" from="jugar" to="." method="_on_jugar_pressed"]
+[connection signal="pressed" from="salir" to="." method="_on_salir_pressed"]

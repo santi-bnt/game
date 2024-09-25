@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://cnsv7h5f55bbe"]
+
+[ext_resource type="Script" path="res://camaleon.gd" id="1_aw1uk"]
+[ext_resource type="Texture2D" uid="uid://byrs5w77joa0m" path="res://camaleon.png" id="2_honlw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i1xfv"]
+atlas = ExtResource("2_honlw")
+region = Rect2(0, 0, 1194, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq3qy"]
+atlas = ExtResource("2_honlw")
+region = Rect2(1194, 0, 1194, 672)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_leoai"]
+atlas = ExtResource("2_honlw")
+region = Rect2(2388, 0, 1194, 672)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m5sgg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i1xfv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq3qy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_leoai")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ykfkc"]
+size = Vector2(69, 42)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkbjt"]
+size = Vector2(74, 49)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_aw1uk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(153, 111)
+scale = Vector2(0.0586265, 0.0572917)
+sprite_frames = SubResource("SpriteFrames_m5sgg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(151, 111)
+shape = SubResource("RectangleShape2D_ykfkc")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(151, 108)
+shape = SubResource("RectangleShape2D_nkbjt")
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 0.8
+autostart = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(143, 83)
+
+[node name="RayCast2D2" type="RayCast2D" parent="."]
+position = Vector2(161, 83)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

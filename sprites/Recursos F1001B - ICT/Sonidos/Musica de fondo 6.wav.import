@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b708ltktl823i"
+path="res://.godot/imported/Musica de fondo 6.wav-c3ad4a4cb03091fb14eeb9680c23a725.sample"
+
+[deps]
+
+source_file="res://sprites/Recursos F1001B - ICT/Sonidos/Musica de fondo 6.wav"
+dest_files=["res://.godot/imported/Musica de fondo 6.wav-c3ad4a4cb03091fb14eeb9680c23a725.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

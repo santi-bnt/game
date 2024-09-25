@@ -1,0 +1,70 @@
+[gd_scene load_steps=9 format=3 uid="uid://bd7g3hsvf2y1r"]
+
+[ext_resource type="Script" path="res://murcielago.gd" id="1_jrral"]
+[ext_resource type="Texture2D" uid="uid://b0s4ga1ww2qlh" path="res://sprites/Recursos F1001B - ICT/Enemigos/Murcielago.png" id="2_h5l3h"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxosd"]
+atlas = ExtResource("2_h5l3h")
+region = Rect2(0, 0, 43, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j3hym"]
+atlas = ExtResource("2_h5l3h")
+region = Rect2(43, 0, 43, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lan7t"]
+atlas = ExtResource("2_h5l3h")
+region = Rect2(86, 0, 43, 30)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8g8i0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxosd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j3hym")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lan7t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6kbir"]
+size = Vector2(36.875, 32.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xjmo"]
+size = Vector2(34.5, 29.5)
+
+[node name="murcielago" type="CharacterBody2D"]
+script = ExtResource("1_jrral")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(920.5, 171.333)
+scale = Vector2(1.32558, 1.11111)
+sprite_frames = SubResource("SpriteFrames_8g8i0")
+frame_progress = 0.787701
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(912.563, 170.75)
+shape = SubResource("RectangleShape2D_6kbir")
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+autostart = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(907, 173)
+target_position = Vector2(-56, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(913, 171)
+shape = SubResource("RectangleShape2D_5xjmo")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
